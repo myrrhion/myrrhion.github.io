@@ -4,7 +4,7 @@
 <label for="name">Name (used in game to target):</label><br>
 <input type="text" id="name" value="Joey Drew"></input><br>
 <label for="core_aspect">Core Aspect:</label><br>
-<input type="text" id="core_aspect" value="The Man with the Dreams"></input><br>
+<input type="text" id="core_aspect" value="The Man with the Dreams" size="35"></input><br>
 <label for="omega_aspect">Omega Aspect:</label><br>
 <input type="text" id="omega_aspect" value=""></input><br>
 <table>
@@ -23,13 +23,18 @@ function addskill(tier) {
     var tinydiv = document.createElement("div");
     var skillname = document.createElement("input");
     skillname.type="text";
+    skillname.size = "15"
     var skilllevel = document.createElement("input");
     skilllevel.type="number";
+    skilllevel.min = "0";
+    skilllevel.max = "2";
+    skilllevel.defaultValue = "0";
 	var delbutn = document.createElement("button");
 	delbutn.innerHTML = "Delete";
 	delbutn.onclick  = function(){bigdiv.removeChild(tinydiv)}; 
     tinydiv.appendChild(skillname);
     tinydiv.appendChild(skilllevel);
+    tinydiv.appendChild(delbutn);
     bigdiv.appendChild(tinydiv);
 }
 </script>

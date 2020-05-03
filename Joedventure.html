@@ -22,8 +22,14 @@ function addskill(tier) {
     var bigdiv = document.getElementById(tier);
     var tinydiv = document.createElement("div");
     var skillname = document.createElement("input");
-    skillname.type="text"
+    skillname.type="text";
+    var skilllevel = document.createElement("input");
+    skilllevel.type="number";
+	var delbutn = document.createElement("button");
+	delbutn.innerHTML = "Delete";
+	delbutn.onclick  = function(){bigdiv.removeChild(tinydiv)}; 
     tinydiv.appendChild(skillname);
+    tinydiv.appendChild(skilllevel);
     bigdiv.appendChild(tinydiv);
 }
 </script>

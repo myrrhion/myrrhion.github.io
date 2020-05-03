@@ -12,14 +12,19 @@
 		<th><label for="good_aspect">Good aspect name:</label><br><input type="text" id="good_aspect" value=""></input></th>
 	</tr>
 	<tr>
-		<td><label for="good_skills">Good skills:</label><br><div id="good_skills">Test??</div><br><button type="button" onclick="addskill('good_skills')">Add skill</button></td>
+		<td><label for="good_skills">Good skills:</label><br><div id="good_skills">Test??</div><button type="button" onclick="addskill('good_skills')">Add skill</button></td>
 	</tr>
 </table>
 <div id="stunts"></div>
 
 <script>
 function addskill(tier) {
-    document.getElementById(tier).style.color = "red";
+    var bigdiv = document.getElementById(tier);
+    var tinydiv = document.createElement("div");
+    var skillname = document.createElement("input");
+    skillname.type="text"
+    tinydiv.appendChild(skillname);
+    bigdiv.appendChild(tinydiv);
 }
 </script>
 </body>

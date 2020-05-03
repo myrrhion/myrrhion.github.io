@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
 <body>
-<label for="name">Name (used in game to target):</label>
-<input type="text" id="name" value="Joey Drew"></input>
+<label for="name">Name (used in game to target):</label><br>
+<input type="text" id="name" value="Joey Drew"></input><br>
+<label for="core_aspect">Core Aspect:</label><br>
+<input type="text" id="core_aspect" value="The Man with the Dreams"></input><br>
+<label for="omega_aspect">Omega Aspect:</label><br>
+<input type="text" id="omega_aspect" value=""></input><br>
 <table>
 	<tr>
-		<th><label for="good_aspect">Good aspect name:</label><input type="text" id="good_aspect" value="The Man with the Dreams"></input></th>
+		<th><label for="good_aspect">Good aspect name:</label><br><input type="text" id="good_aspect" value=""></input></th>
 	</tr>
 	<tr>
-		<td><label for="good_skills">Good skills:</label><textarea id="good_skills"></textarea></td>
+		<td><label for="good_skills">Good skills:</label><br><div id="good_skills">Test??</div><br><button type="button" onclick="addskill('good_skills')">Add skill</button></td>
 	</tr>
 </table>
+<div id="stunts"></div>
+
+<script>
+function addskill(tier) {
+    document.getElementById(tier).style.color = "red";
+}
+</script>
 </body>
 </html>

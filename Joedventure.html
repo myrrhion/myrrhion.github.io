@@ -4,31 +4,54 @@
 <label for="name">Name (used in game to target):</label><br>
 <input type="text" id="name" value="Joey Drew"></input><br>
 <label for="core_aspect">Core Aspect:</label><br>
-<input type="text" id="core_aspect" value="The Man with the Dreams" size="35"></input><br>
+<input type="text" id="core_aspect" value="The Man with the Dreams" size="40"></input><br>
 <label for="omega_aspect">Omega Aspect:</label><br>
-<input type="text" id="omega_aspect" value=""></input><br>
+<input type="text" id="omega_aspect" value="" size="40"></input><br>
 <table>
 	<tr>
-		<th><label for="good_aspect">Good aspect name:</label><br><input type="text" id="good_aspect" value=""></input></th>
+		<th><label for="good_aspect">Good aspect name:</label><br><input type="text" id="good_aspect" value="">Good aspect</input></th>
+		<th><label for="fair_aspect">Fair aspect name:</label><br><input type="text" id="fair_aspect" value="">Fair aspect</input></th>
+		<th><label for="average_aspect_one">First Average aspect name:</label><br><input type="text" id="average_aspect_one" value=""></input></th>
+		<th><label for="average_aspect_two">Second Average aspect name:</label><br><input type="text" id="average_aspect_two" value=""></input></th>
 	</tr>
 	<tr>
-		<td><label for="good_skills">Good skills:</label><br><div id="good_skills">Test??</div><button type="button" onclick="addskill('good_skills')">Add skill</button></td>
+		<td><label for="good_skills">Good skills:</label><br><div id="good_skills"></div>
+		<button type="button" onclick="addskill('good_skills')">Add skill</button></td>
+		<td><label for="fair_skills">Fair skills:</label><br><div id="fair_skills"></div>
+		<button type="button" onclick="addskill('fair_skills')">Add skill</button></td>
+		<td><label for="average_skills_one">First Average skills:</label><br><div id="average_skills_one"></div>
+		<button type="button" onclick="addskill('average_skills_one')">Add skill</button></td>
+		<td><label for="average_skills_two">Second Average skills:</label><br><div id="average_skills_two"></div>
+		<button type="button" onclick="addskill('average_skills_two')">Add skill</button></td>
 	</tr>
 </table>
 <div id="stunts"></div>
-
+<select id="stunttype">
+	<option value="ImproveStunt1">Improve 1 action in 1 skill by +2.</option>
+	<option value="ImproveStunt2">Improve 2 actions in 1 skill by +1.</option>
+	<option value="ImproveStunt3">Improve 1 action in 2 skills by +1.</option>
+	<option value="ExtendStunt">Add 1 action to a skill</option>
+	<option value="SignatureAspect">Signature Aspect</option>
+	<option value="">Other kind of stunt</option>
+</select><button type="button" onclick="addStunt()">Add Stunt</button>
+<div style="display:none">
+<div id="templateImproveStunt1"><input type="text" id="skill"></input><input type="text" id="action"></input><input type="text" id="description"></input></div>
+</div>
 <script>
 function addskill(tier) {
     var bigdiv = document.getElementById(tier);
     var tinydiv = document.createElement("div");
     var skillname = document.createElement("input");
     skillname.type="text";
-    skillname.size = "15"
+    skillname.size = "10";
+    skillname.id = "skillname";
     var skilllevel = document.createElement("input");
     skilllevel.type="number";
+    skilllevel.id = "skilllevel";
     skilllevel.min = "0";
     skilllevel.max = "2";
     skilllevel.defaultValue = "0";
+    skilllevel.size = "1";
 	var delbutn = document.createElement("button");
 	delbutn.innerHTML = "Delete";
 	delbutn.onclick  = function(){bigdiv.removeChild(tinydiv)}; 
@@ -36,6 +59,11 @@ function addskill(tier) {
     tinydiv.appendChild(skilllevel);
     tinydiv.appendChild(delbutn);
     bigdiv.appendChild(tinydiv);
+}
+function addStunt(){
+	var bigdiv = document.getElementById("stunts");
+    var tinydiv = document.createElement("div");
+    
 }
 </script>
 </body>

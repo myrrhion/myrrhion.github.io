@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <body>
-<label for="name">Name (used in game to target):</label><br>
-<input type="text" id="name" value="Joey Drew"></input><br>
+<label for="char_name">Name (used in game to target):</label><br>
+<input type="text" id="char_name" value="Joey Drew"></input><br>
 <label for="core_aspect">Core Aspect:</label><br>
 <input type="text" id="core_aspect" value="The Man with the Dreams" size="40"></input><br>
 <label for="omega_aspect">Omega Aspect:</label><br>
 <input type="text" id="omega_aspect" value="" size="40"></input><br>
 <table>
 	<tr>
-		<th><label for="good_aspect">Good aspect name:</label><br><input type="text" id="good_aspect" value="">Good aspect</input></th>
-		<th><label for="fair_aspect">Fair aspect name:</label><br><input type="text" id="fair_aspect" value="">Fair aspect</input></th>
+		<th><label for="good_aspect">Good aspect name:</label><br><input type="text" id="good_aspect" value="" placeholder="Good Aspect"></input></th>
+		<th><label for="fair_aspect">Fair aspect name:</label><br><input type="text" id="fair_aspect" value=""></input></th>
 		<th><label for="average_aspect_one">First Average aspect name:</label><br><input type="text" id="average_aspect_one" value=""></input></th>
 		<th><label for="average_aspect_two">Second Average aspect name:</label><br><input type="text" id="average_aspect_two" value=""></input></th>
 	</tr>
@@ -37,6 +37,8 @@
 <div style="display:none">
 <div id="templateImproveStunt1"><input type="text" id="skill"></input><input type="text" id="action"></input><input type="text" id="description"></input></div>
 </div>
+<button onclick="build()">Build</button>
+<div id="build"></div>
 <script>
 function addskill(tier) {
     var bigdiv = document.getElementById(tier);
@@ -44,7 +46,8 @@ function addskill(tier) {
     var skillname = document.createElement("input");
     skillname.type="text";
     skillname.size = "10";
-    skillname.id = "skillname";
+    skillname.classname = "skillname";
+    skillname.placeholder = "Skill Name";
     var skilllevel = document.createElement("input");
     skilllevel.type="number";
     skilllevel.id = "skilllevel";
@@ -64,6 +67,44 @@ function addStunt(){
 	var bigdiv = document.getElementById("stunts");
     var tinydiv = document.createElement("div");
     
+}
+function getSkills(tier){
+	var skills = {};
+	document.getElementById(tier).childNodes.forEach(appendTo,skills);
+	return skills;
+	}
+function appendTo(val,index){
+	this[val.getElementsByTagName("input")[0].value] = val.getElementsByTagName("input")[1].value;
+}
+function build(){
+	var bigdiv = document.getElementById("build");
+	var goodasp = document.getElementById("good_aspect");
+	var joey = {name:document.getElementById("char_name").value,"core aspect":document.getElementById("core_aspect").value,"omega aspect":document.getElementById("omega_aspect").value};
+	var gasp = {};
+	if(goodasp.value != ""){
+		gasp = {name:goodasp.value};
+		gasp["skills"] = getSkills("good_skills");
+		joey["good mode"] = gasp;
+	}
+	goodasp = document.getElementById("fair_aspect");
+	if(goodasp.value != ""){
+		gasp = {name:goodasp.value};
+		gasp["skills"] = getSkills("fair_skills");
+		joey["fair mode"] = gasp;
+	}
+	goodasp = document.getElementById("average_aspect_one");
+	if(goodasp.value != ""){
+		gasp = {name:goodasp.value};
+		gasp["skills"] = getSkills("average_skills_one");
+		joey["average mode one"] = gasp;
+	}
+	goodasp = document.getElementById("average_aspect_two");
+	if(goodasp.value != ""){
+		gasp = {name:goodasp.value};
+		gasp["skills"] = getSkills("average_skills_two");
+		joey["average mode two"] = gasp;
+	}
+	bigdiv.innerHTML = JSON.stringify(joey, null, '&emsp;').replace(/\n/g,'<br>');
 }
 </script>
 </body>

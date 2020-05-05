@@ -4,45 +4,43 @@
 <label for="char_name">Name (used in game to target):</label><br>
 <input type="text" id="char_name" value="Joey Drew"></input><br>
 <label for="core_aspect">Core Aspect:</label><br>
-<input type="text" id="core_aspect" value="The Man with the Dreams" size="40"></input><br>
+<input type="text" id="core_aspect" value="The Man with the Dreams" size="40" placeholder="Core Aspect"></input><br>
 <label for="omega_aspect">Omega Aspect:</label><br>
-<input type="text" id="omega_aspect" value="" size="40"></input><br>
+<input type="text" id="omega_aspect" value="" size="40" placeholder="Omega Aspect"></input><br>
 <table>
 	<tr>
 		<th><label for="good_aspect">Good aspect name:</label><br><input type="text" id="good_aspect" value="" placeholder="Good Aspect"></input></th>
-		<th><label for="fair_aspect">Fair aspect name:</label><br><input type="text" id="fair_aspect" value=""></input></th>
-		<th><label for="average_aspect_one">First Average aspect name:</label><br><input type="text" id="average_aspect_one" value=""></input></th>
-		<th><label for="average_aspect_two">Second Average aspect name:</label><br><input type="text" id="average_aspect_two" value=""></input></th>
+		<th><label for="fair_aspect">Fair aspect name:</label><br><input type="text" id="fair_aspect" value="" placeholder="Fair Aspect"></input></th>
+		<th><label for="average_aspect_one">First Average aspect name:</label><br><input type="text" id="average_aspect_one" value="" placeholder="Average Aspect"></input></th>
+		<th><label for="average_aspect_two">Second Average aspect name:</label><br><input type="text" id="average_aspect_two" placeholder="Average Aspect" value=""></input></th>
 	</tr>
 	<tr>
-		<td><label for="good_skills">Good skills:</label><br><div id="good_skills"></div>
+		<td style="vertical-align: top"><label for="good_skills">Good skills:</label><br><div id="good_skills"></div>
 		<button type="button" onclick="addskill('good_skills')">Add skill</button></td>
-		<td><label for="fair_skills">Fair skills:</label><br><div id="fair_skills"></div>
+		<td style="vertical-align: top"><label for="fair_skills">Fair skills:</label><br><div id="fair_skills"></div>
 		<button type="button" onclick="addskill('fair_skills')">Add skill</button></td>
-		<td><label for="average_skills_one">First Average skills:</label><br><div id="average_skills_one"></div>
+		<td style="vertical-align: top"><label for="average_skills_one">First Average skills:</label><br><div id="average_skills_one"></div>
 		<button type="button" onclick="addskill('average_skills_one')">Add skill</button></td>
-		<td><label for="average_skills_two">Second Average skills:</label><br><div id="average_skills_two"></div>
+		<td style="vertical-align: top"><label for="average_skills_two">Second Average skills:</label><br><div id="average_skills_two"></div>
 		<button type="button" onclick="addskill('average_skills_two')">Add skill</button></td>
 	</tr>
 </table>
 <div id="stunts"></div>
-<select id="stunttype">
+<select id="stunttype" selectedIndex="0">
 	<option value="ImproveStunt1">Improve 1 action in 1 skill by +2.</option>
 	<option value="ImproveStunt2">Improve 2 actions in 1 skill by +1.</option>
-	<option value="ImproveStunt3">Improve 1 action in 2 skills by +1.</option>
 	<option value="ExtendStunt">Add 1 action to a skill</option>
 	<option value="SignatureAspect">Signature Aspect</option>
 	<option value="">Other kind of stunt</option>
 </select><button type="button" onclick="addStunt()">Add Stunt</button>
-<div style="display:none">
-<div id="templateImproveStunt1"><input type="text" id="skill"></input><input type="text" id="action"></input><input type="text" id="description"></input></div>
-</div>
+<div id="templates" style="display:none"><div placeholder="type" id="templateImproveStunt1"><input type="hidden" placeholder="type" value="ImproveStunt">Improve Stunt (type 1) </input><input type="text" id="name" placeholder="name" size="40"><input type="text" id="description" placeholder="description" size ="40"></input></input><input type="text" id="skill"placeholder="associated_skill"></input><input type="text" placeholder="actions"></input></div><div id="templateImproveStunt2"><input type="hidden" placeholder="type" value="ImproveStunt">Improve Stunt (type 2) </input><input type="text" id="name" placeholder="name" size="40"><input type="text" id="description" placeholder="description" size ="40"></input></input><input type="text" id="skill"placeholder="associated_skill"></input><input type="text" placeholder="actions"></input><input type="text" placeholder="actions"></input></div><div id="templateExtendStund"><input type="hidden" placeholder="type" value="ExtendStunt">Extend Stunt </input><input type="text" id="name" placeholder="name" size="40"></input><input type="text" id="description" placeholder="description" size ="40"></input><input type="text" id="skill"placeholder="associated_skill"></input><input type="text" placeholder="action"></input></div><div id="templateSignatureAspect"><input type="hidden" placeholder="type" value="SignatureAspectStunt">Signature Aspect </input><input type="text" id="name" placeholder="name" size="40"></input></div><div id="templateStunt"><input type="hidden" placeholder="type" value="Stunt">Other Stunt </input><input type="text" id="name" placeholder="name" size="40"></input><input type="text" id="description" placeholder="description" size ="40"></input></div></div>
 <button onclick="build()">Build</button>
 <div id="build"></div>
 <script>
 function addskill(tier) {
     var bigdiv = document.getElementById(tier);
     var tinydiv = document.createElement("div");
+    tinydiv.style.verticalAlign = "top";
     var skillname = document.createElement("input");
     skillname.type="text";
     skillname.size = "10";
@@ -65,7 +63,12 @@ function addskill(tier) {
 }
 function addStunt(){
 	var bigdiv = document.getElementById("stunts");
-    var tinydiv = document.createElement("div");
+    var tinydiv = document.getElementById("templates").childNodes[document.getElementById("stunttype").selectedIndex].cloneNode(true);
+	var delbutn = document.createElement("button");
+	delbutn.innerHTML = "Delete";
+	delbutn.onclick  = function(){bigdiv.removeChild(tinydiv)}; 
+    tinydiv.appendChild(delbutn);	
+    bigdiv.appendChild(tinydiv);
     
 }
 function getSkills(tier){
@@ -75,6 +78,26 @@ function getSkills(tier){
 	}
 function appendTo(val,index){
 	this[val.getElementsByTagName("input")[0].value] = val.getElementsByTagName("input")[1].value;
+}
+function appStunt(val){
+	ins = {};
+	val.childNodes.forEach(function(v){
+		console.log(v.tagName);
+		if(v.tagName == "INPUT"){
+			if(v.placeholder == "actions"){
+				if(this[v.placeholder]){
+				this[v.placeholder].push(v.value);
+				}
+				else
+					this[v.placeholder] = [v.value];
+				
+			}
+			else{
+				this[v.placeholder] = v.value;
+			}
+			};
+	},ins)
+	this.push(ins);
 }
 function build(){
 	var bigdiv = document.getElementById("build");
@@ -103,7 +126,9 @@ function build(){
 		gasp = {name:goodasp.value};
 		gasp["skills"] = getSkills("average_skills_two");
 		joey["average mode two"] = gasp;
-	}
+	};
+	joey.stunts = [];
+	document.getElementById("stunts").childNodes.forEach(appStunt,joey.stunts);
 	bigdiv.innerHTML = JSON.stringify(joey, null, '&emsp;').replace(/\n/g,'<br>');
 }
 </script>

@@ -2,11 +2,11 @@
 <html>
 <body>
 <label for="char_name">Name (used in game to target):</label><br>
-<input type="text" id="char_name" value="Joey Drew"></input><br>
+<input type="text" id="char_name" value="Joey Drew"/><br>
 <label for="core_aspect">Core Aspect:</label><br>
-<input type="text" id="core_aspect" value="The Man with the Dreams" size="40" placeholder="Core Aspect"></input><br>
+<input type="text" id="core_aspect" value="The Man with the Dreams" size="40" placeholder="Core Aspect"/><br>
 <label for="omega_aspect">Omega Aspect:</label><br>
-<input type="text" id="omega_aspect" value="" size="40" placeholder="Omega Aspect"></input><br>
+<input type="text" id="omega_aspect" value="" size="40" placeholder="Omega Aspect"/><br>
 <table>
 	<tr>
 		<th><label for="good_aspect">Good aspect name:</label><br><input type="text" id="good_aspect" value="" placeholder="Good Aspect"></input></th>
@@ -55,7 +55,7 @@ function addskill(tier) {
     skilllevel.size = "1";
 	var delbutn = document.createElement("button");
 	delbutn.innerHTML = "Delete";
-	delbutn.onclick  = function(){bigdiv.removeChild(tinydiv)}; 
+	delbutn.onclick  = function(){bigdiv.removeChild(tinydiv)};
     tinydiv.appendChild(skillname);
     tinydiv.appendChild(skilllevel);
     tinydiv.appendChild(delbutn);
@@ -66,10 +66,10 @@ function addStunt(){
     var tinydiv = document.getElementById("templates").childNodes[document.getElementById("stunttype").selectedIndex].cloneNode(true);
 	var delbutn = document.createElement("button");
 	delbutn.innerHTML = "Delete";
-	delbutn.onclick  = function(){bigdiv.removeChild(tinydiv)}; 
-    tinydiv.appendChild(delbutn);	
+	delbutn.onclick  = function(){bigdiv.removeChild(tinydiv)};
+    tinydiv.appendChild(delbutn);
     bigdiv.appendChild(tinydiv);
-    
+
 }
 function getSkills(tier){
 	var skills = {};
@@ -90,7 +90,7 @@ function appStunt(val){
 				}
 				else
 					this[v.placeholder] = [v.value];
-				
+
 			}
 			else{
 				this[v.placeholder] = v.value;

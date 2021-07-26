@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Haunted house on the hill helper</title>
+</head>
+<style>
+    div {
+        border-style: solid;
+        border-color: black;
+    }
+    th {
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+    }
+    td {
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+    }
+    .chosen{
+        background: aquamarine;
+    }
+
+</style>
+<body>
+<span id="papa">
+<div id="infobox" style="max-width: 450px;min-height: 150px"    >
+    <select name="Investigators" id="invest" onchange="updateInfobox()"></select><br>
+    <table>
+        <tr>
+            <th id="inv-name" colspan=2></th>
+        </tr>
+        <tr>
+            <td rowspan=6><img id="inv-image" style="max-height: 280px"></td>
+
+            <td id="inv-bday"></td>
+        </tr>
+        <tr>
+            <td id="inv-age">Age:</td>
+        </tr>
+        <tr>
+            <td id="inv-height">Height:</td>
+        </tr>
+        <tr>
+            <td id="inv-weight">Weight:</td>
+        </tr>
+        <tr>
+            <td id="inv-hobbies">Hobbies:</td>
+        </tr>
+        <tr>
+            <td id="inv-figure">Figure:</td>
+        </tr>
+    </table>
+    <button onclick="hideInfobox()">Choose</button>
+</div>
+<table id="stats">
+    <tr>
+        <th>Speed</th><th>Might</th><th>Sanity</th><th>Knowledge</th>
+    </tr>
+</table>
+<script src="./investigators.js"></script>
+<script>
+  investigators.forEach(AddToSelect);
+  BuildTable();
+  updateInfobox();
+</script>
+</span>
+</body>
+</html>

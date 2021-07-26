@@ -8,8 +8,8 @@ const investigators = [
         source: "./dingus.png",
         birthMonth: 7,
         birthDay: 3,
-        birthYear: 1991,
         age: Math.floor(dateDistance(new Date(1991,7,3),present)/365.25),
+        weight: "149 kg",
         standard: [3,3,3,3],
         sanity: [1,1,1,1,1,1,1,4],
         speed: [1,1,1,1,1,1,1,4],
@@ -21,7 +21,6 @@ const investigators = [
         source: "./Bard.png",
         birthMonth: 7,
         birthDay: 24,
-        birthYear: 1991,
         age: Math.floor(dateDistance(new Date(1991,7,24),present)/365.25),
         standard: [3, 3, 3, 3],
         sanity: [1,1,1,1,1,1,1,4],
@@ -34,8 +33,11 @@ const investigators = [
         source: "./Lexie.png",
         birthMonth: 7,
         birthDay: 26,
-        birthYear: 1991,
         age: Math.floor(dateDistance(new Date(1996,7,26),present)/365.25),
+        height: "178 cm",
+        weight: "Like 4 boxes of digestives",
+        hobbies: "Sewing, Reading, Sims",
+        figure: "None yet",
         standard: [3, 3, 3, 3],
         sanity: [1,1,1,1,1,1,1,4],
         speed: [1,1,1,1,1,1,1,4],
@@ -48,11 +50,15 @@ const investigators = [
         birthDay: 21,
         birthMonth: 4,
         age: 12,
+        height: "5'1''",
+        weight: "109 lbs",
+        hobbies: "Computers, Camping, Hockey",
+        figure: "green one",
         standard: [3, 4, 4, 3],
         speed: [3,4,4,4,5,6,7,8],
-        might: [1,1,1,1,1,1,1,4],
-        sanity: [1,1,1,1,1,1,1,4],
-        knowledge: [1,1,1,1,1,1,1,4]
+        might: [2,3,3,4,5,6,6,7],
+        sanity: [3,3,3,4,5,6,7,8],
+        knowledge: [1,3,3,5,5,6,6,7]
     }
 ];
 const statList = ["speed","might","sanity","knowledge"];
@@ -125,6 +131,10 @@ function updateInfobox(){
     document.getElementById("inv-bday").innerHTML = "Born: " + chosen.birthDay +" "+ monthNames[chosen.birthMonth] + " (" +daysToBirthday(chosen) +")";
     document.getElementById("inv-name").innerHTML = chosen.name;
     document.getElementById("inv-age").innerHTML = "Age: " + chosen.age;
+    document.getElementById("inv-height").innerHTML = "Height: " + chosen.height;
+    document.getElementById("inv-weight").innerHTML = "Weight: " + chosen.weight;
+    document.getElementById("inv-hobbies").innerHTML = "Hobbies:<br>" + chosen.hobbies;
+    document.getElementById("inv-figure").innerHTML = "Figure:<br>" + chosen.figure;
     statList.forEach(function (value,index){
         chosen[value].forEach(function (valtwo, undex){
             document.getElementById(value+"-"+(undex+1)).innerHTML = valtwo;
@@ -143,5 +153,6 @@ function updateAbilities(){
 
 }
 function hideInfobox(){
-    document.getElementById("papa").removeChild(document.getElementById("infobox"));
+    document.getElementById("infobox").removeChild(document.getElementById("invest"));
+    document.getElementById("infobox").removeChild(document.getElementById("hidebox"));
 }

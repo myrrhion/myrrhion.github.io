@@ -26,14 +26,14 @@
 </style>
 <body>
 <span id="papa">
-<div id="infobox" style="max-width: 450px"    >
+<div id="infobox" style="max-width: 480px">
     <select name="Investigators" id="invest" onchange="updateInfobox()"></select>
-    <table>
+    <table style="width: 100%">
         <tr>
             <th id="inv-name" colspan=2></th>
         </tr>
         <tr>
-            <td rowspan=6><img id="inv-image" style="max-height: 280px"></td>
+            <td rowspan=6><img id="inv-image" style="max-height: 320px"></td>
 
             <td id="inv-bday"></td>
         </tr>
@@ -50,14 +50,14 @@
             <td id="inv-hobbies">Hobbies:</td>
         </tr>
         <tr>
-            <td id="inv-figure">Figure:</td>
+            <td>Figure:<br><img id="inv-figure" style="max-height: 150px" src=""></td>
         </tr>
     </table>
-    <button id="hidebox" onclick="hideInfobox()">Choose</button>
+    <span id="hidebox"><button onclick="hideInfobox()">Choose</button><span id="inv-total"></span></span>
 </div>
-<table id="stats">
+<table style="width: 480px" id="stats">
     <tr>
-        <th>Speed</th><th>Might</th><th>Sanity</th><th>Knowledge</th>
+        <th style="width: 25%">Speed</th><th style="width: 25%">Might</th><th style="width: 25%">Sanity</th><th style="width: 25%">Knowledge</th>
     </tr>
 </table>
 <script src="./investigators.js"></script>

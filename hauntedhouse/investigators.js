@@ -273,7 +273,6 @@ function BuildTable(){
         currentStat[value] = 0;
         let elm = document.createElement("td");
         let plus = document.createElement("button");
-
         elm.style.textAlign = "center";
         plus.onclick = function (){increase(value)};
         plus.innerHTML = "+";

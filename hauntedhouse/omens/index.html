@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Omens</title>
+</head>
+<style>
+
+    .bignfat{
+        font-size: 20px;
+    }
+</style>
+<body>
+<button onclick="addOmen()">Draw Omen</button>
+<select id="room" onchange="getHaunt()">
+    <option value="NULL">Select Room...</option>
+    <option value="Abandoned_Room">Abandoned Room</option>
+    <option value="Balcony">Balcony</option>
+    <option value="Catacombs">Catacombs</option>
+    <option value="Charred_Room">Charred Room</option>
+    <option value="Dining_Room">Dining Room</option>
+    <option value="Furnace_Room">Furnace Room</option>
+    <option value="Gallery">Gallery</option>
+    <option value="Gymnasium">Gymnasium</option>
+    <option value="Junk_Room">Junk Room</option>
+    <option value="Kitchen">Kitchen</option>
+    <option value="Master_Bedroom">Master Bedroom</option>
+    <option value="Pentagram_Chamber">Pentagram Chamber</option>
+    <option value="Servants_Quarters">Servant's Quarters</option>
+</select>
+<table>
+<tr><td style="width: 50%"><div id="omens" >
+    <span>Revealed Omens: <span id="omenCount">0</span></span>
+
+</div></td>
+    <td><iframe id="expl" style="height:230px;width:260px" width= 50% src="basic.html"></iframe></td></tr>
+</table>
+<script src="./omens.js"></script><br>
+<span class="bignfat" id="haunt"></span>
+<script>
+
+</script>
+</body>
+</html>

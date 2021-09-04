@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<style>
+	div {	margin: 0 auto;
+		max-width: 500px;
+		height: 100%;
+		padding: 5px;
+		border: #5d612d solid 1px;
+		background: lightgray;
+		background-size: 100%;
+	}
+	body {
+		background: #727272;
+	}
+	h3{
+		margin-top: 0;
+		margin-bottom: 4px;
+	}
+</style>
+<body>
+<div>
+<div><label for="room_name">Room Name:</label><br>
+<input type="text" id="room_name" value="Some Room"/>
+</div><br>
+	<div>
+		<h3>Exits</h3>
+		<label for="north">North Exit</label><input id="north" type="checkbox"/>
+		<label for="south">South Exit</label><input id="south" type="checkbox"/>
+		<label for="east">East Exit</label><input id="east" type="checkbox"/>
+		<label for="west">West Exit</label><input id="west" type="checkbox"/>
+	</div>
+	<div>
+		<h3>Windows</h3>
+<label for="north-window">North Window</label><input id="north-window" type="checkbox"/>
+<label for="south-window">South Window</label><input id="south-window" type="checkbox"/>
+<label for="east-window">East Window</label><input id="east-window" type="checkbox"/>
+<label for="west-window">West Window</label><input id="west-window" type="checkbox"/>
+	</div>
+	<div>
+		<h3>Floors</h3>
+		<label for="upper">Upper Floor</label><input id="upper" type="checkbox">
+		<label for="ground">Ground</label><input id="ground" type="checkbox">
+		<label for="basement">Basement</label><input id="basement" type="checkbox">
+	</div>
+	<div>
+		<h3>Events & Symbol</h3>
+		<label for="symbol">Symbol</label>
+		<select id="symbol">
+			<option>None</option>
+			<option value="omen">Omen</option>
+			<option value="item">Item</option>
+			<option value="event">Event</option>
+		</select><br>
+		<label for="notes">Special of rooms</label><br><textarea id="notes" style="width: 95%;resize: none"></textarea>
+	</div>
+	<button onclick="makeClipboard()">Copy to clipboard</button>
+</div>
+<script>
+	function makeClipboard() {
+		let out = "```js\n";
+		let roomName = document.getElementById("room_name").value;
+		let roomId = roomName.toLowerCase().replaceAll(" ","_").replaceAll("'",'');
+		out += `${roomId}:{\nid:"${roomId},\nname:${roomName}",\n`
+		let exits = [];
+		if(document.getElementById("north").checked)
+			exits.push(0);
+		if(document.getElementById("east").checked)
+			exits.push(1);
+		if(document.getElementById("south").checked)
+			exits.push(2);
+		if(document.getElementById("west").checked)
+			exits.push(3);
+		out += `exits: [${exits.join(", ")}],\n`
+		let windows = [];
+		if(document.getElementById("north-window").checked)
+			windows.push(0);
+		if(document.getElementById("east-window").checked)
+			windows.push(1);
+		if(document.getElementById("south-window").checked)
+			windows.push(2);
+		if(document.getElementById("west-window").checked)
+			windows.push(3);
+		if(windows.length>0)
+			out += `windows: [${windows.join(", ")}],\n`
+		let floors = [];
+		if(document.getElementById("upper").checked)
+			floors.push('"upper"');
+		if(document.getElementById("ground").checked)
+			floors.push('"ground"');
+		if(document.getElementById("basement").checked)
+			floors.push('"basement"');
+		out += `floors: [${floors.join(", ")}],\n`
+		const omens =  document.getElementById("symbol");
+		let val = omens.item( omens.selectedIndex).value;
+		if(val !== "None")
+			out += `symbols: ["${val}"],\n`
+		out += "}```\n";
+		out += document.getElementById("notes").value;
+		navigator.clipboard.writeText(out);
+	}
+</script>
+</body>
+</html>

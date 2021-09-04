@@ -1,0 +1,39 @@
+body {
+	background: gainsboro;
+}
+.top-survive {
+	margin: 0 auto;
+	max-width: 500px;
+	height: 100%;
+	padding: 15px;
+	border: #5d612d solid 1px;
+	background-image: url("letters/thingie.png") ;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.top-traitor {
+	margin: 0 auto;
+	max-width: 500px;
+	height: 100%;
+	padding: 15px;
+	border: #2e4c62 solid 1px;
+	background-image: url("letters/traitor.png") ;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.quote {
+	font-style: italic;
+}
+h1 {
+	margin-top: 5px;
+}
+h4 {
+	margin-bottom: 5px;
+}
+p{
+	margin: 0 5%;
+}
+ul{
+	margin: 0
+}

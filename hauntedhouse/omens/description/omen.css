@@ -1,0 +1,15 @@
+div{
+	max-width: 600px;
+	margin: 0 auto;
+	background: #e9e2db;
+}
+h3 {
+	margin: 0 auto;
+	width: max-content;
+}
+h4 {
+	margin-bottom: 5px;
+}
+p{
+	margin: 0 5%;
+}

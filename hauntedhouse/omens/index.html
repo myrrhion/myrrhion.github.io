@@ -7,10 +7,21 @@
 <style>
 
     .bignfat{
-        font-size: 20px;
+        font-size: xx-large;
     }
+    div{
+        font-size: larger;
+    }
+    .parent { display: flex; }
+    .parent > div {margin: 0 auto; align-items: stretch; height: 100%; width:45%; }
+	.tip{
+		margin: 0 auto;
+		max-width: 500px;
+		background: #e9e2db;
+	}
 </style>
 <body>
+<div class="tip" style="margin: 0 auto; max-width: 600px">
 <button onclick="addOmen()">Draw Omen</button>
 <select id="room" onchange="getHaunt()">
     <option value="NULL">Select Room...</option>
@@ -28,16 +39,18 @@
     <option value="Pentagram_Chamber">Pentagram Chamber</option>
     <option value="Servants_Quarters">Servant's Quarters</option>
 </select>
-<table>
-<tr><td style="width: 50%"><div id="omens" >
-    <span>Revealed Omens: <span id="omenCount">0</span></span>
-
-</div></td>
-    <td><iframe id="expl" style="height:230px;width:260px" width= 50% src="basic.html"></iframe></td></tr>
-</table>
+<div class="parent">
+        <div id="omens" >
+            <div>Revealed Omens: <span id="omenCount">0</span></div>
+        </div>
+    <div>
+        <iframe id="expl" width="100%" height="100%" src="description/basic.html"></iframe>
+    </div>
+</div>
 <script src="./omens.js"></script><br>
 <span class="bignfat" id="haunt"></span>
-<script>
+</div>
+	<script>
 
 </script>
 </body>

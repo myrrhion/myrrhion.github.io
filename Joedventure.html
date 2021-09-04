@@ -83,8 +83,8 @@ function appStunt(val){
 	ins = {};
 	val.childNodes.forEach(function(v){
 		console.log(v.tagName);
-		if(v.tagName == "INPUT"){
-			if(v.placeholder == "actions"){
+		if(v.tagName === "INPUT"){
+			if(v.placeholder === "actions"){
 				if(this[v.placeholder]){
 				this[v.placeholder].push(v.value);
 				}
@@ -104,25 +104,25 @@ function build(){
 	var goodasp = document.getElementById("good_aspect");
 	var joey = {name:document.getElementById("char_name").value,"core aspect":document.getElementById("core_aspect").value,"omega aspect":document.getElementById("omega_aspect").value};
 	var gasp = {};
-	if(goodasp.value != ""){
+	if(goodasp.value !== ""){
 		gasp = {name:goodasp.value};
 		gasp["skills"] = getSkills("good_skills");
 		joey["good mode"] = gasp;
 	}
 	goodasp = document.getElementById("fair_aspect");
-	if(goodasp.value != ""){
+	if(goodasp.value !== ""){
 		gasp = {name:goodasp.value};
 		gasp["skills"] = getSkills("fair_skills");
 		joey["fair mode"] = gasp;
 	}
 	goodasp = document.getElementById("average_aspect_one");
-	if(goodasp.value != ""){
+	if(goodasp.value !== ""){
 		gasp = {name:goodasp.value};
 		gasp["skills"] = getSkills("average_skills_one");
 		joey["average mode one"] = gasp;
 	}
 	goodasp = document.getElementById("average_aspect_two");
-	if(goodasp.value != ""){
+	if(goodasp.value !== ""){
 		gasp = {name:goodasp.value};
 		gasp["skills"] = getSkills("average_skills_two");
 		joey["average mode two"] = gasp;

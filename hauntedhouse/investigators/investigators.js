@@ -291,6 +291,8 @@ function BuildTable(){
     })
     stats.appendChild(deathRow);
     stats.appendChild(buttonRow);
+    if(sessionStorage.getItem("playing"))
+		hideInfobox();
 }
 
 function increase(value){
@@ -310,24 +312,24 @@ function AddToSelect(item, num) {
 }
 function updateInfobox(){
     const list =  document.getElementById("invest");
-    const chosen = investigators[list.selectedIndex];
-    document.getElementById("inv-image").src = "./pictures/"+chosen.source;
+    console.log(sessionStorage.getItem("playing"));
+    const chosen = !sessionStorage.getItem("playing")? investigators[list.selectedIndex]: investigators[sessionStorage.getItem("playing")];
+    document.getElementById("inv-image").src = "../pictures/"+chosen.source;
     document.getElementById("inv-bday").innerHTML = "Born: " + chosen.birthDay +" "+ monthNames[chosen.birthMonth] + " (" +daysToBirthday(chosen) +")";
     document.getElementById("inv-name").innerHTML = chosen.name;
     document.getElementById("inv-age").innerHTML = "Age: " + chosen.age;
     document.getElementById("inv-height").innerHTML = "Height: " + chosen.height;
     document.getElementById("inv-weight").innerHTML = "Weight: " + chosen.weight;
     document.getElementById("inv-hobbies").innerHTML = "Hobbies:<br>" + chosen.hobbies;
-    document.getElementById("inv-figure").src = "./pictures/" + chosen.figure;
+    document.getElementById("inv-figure").src = "../pictures/" + chosen.figure;
     let total = 0;
     statList.forEach(function (value,index){
         chosen[value].forEach(function (valtwo, undex){
             document.getElementById(value+"-"+(undex+1)).innerHTML = valtwo;
             total += valtwo;
         })
-        currentStat[value] = chosen.standard[index];
+        currentStat[value] = sessionStorage.getItem("playing")? Number.parseInt(sessionStorage.getItem(value)) :chosen.standard[index];
     })
-    document.getElementById("inv-total").innerHTML = "Total: " + total;
     updateAbilities()
 }
 function updateAbilities(){
@@ -336,10 +338,12 @@ function updateAbilities(){
     })
     statList.forEach(function (value){
         document.getElementById(value+"-"+currentStat[value]).className = "chosen";
-    });
+		sessionStorage.setItem(value,`${currentStat[value]}`);
+	});
 
 }
 function hideInfobox(){
+	sessionStorage.setItem("playing",`${document.getElementById("invest").selectedIndex}`)
     document.getElementById("infobox").removeChild(document.getElementById("invest"));
     document.getElementById("infobox").removeChild(document.getElementById("hidebox"));
 }

@@ -64,7 +64,7 @@
 		let out = "```js\n";
 		let roomName = document.getElementById("room_name").value;
 		let roomId = roomName.toLowerCase().replaceAll(" ","_").replaceAll("'",'');
-		out += `${roomId}:{\nid:"${roomId},\nname:${roomName}",\n`
+		out += `${roomId}:{\n\tid:"${roomId}",\n\tname:"${roomName}",\n`
 		let exits = [];
 		if(document.getElementById("north").checked)
 			exits.push(0);
@@ -74,7 +74,7 @@
 			exits.push(2);
 		if(document.getElementById("west").checked)
 			exits.push(3);
-		out += `exits: [${exits.join(", ")}],\n`
+		out += `\texits: [${exits.join(", ")}],\n`
 		let windows = [];
 		if(document.getElementById("north-window").checked)
 			windows.push(0);
@@ -93,11 +93,11 @@
 			floors.push('"ground"');
 		if(document.getElementById("basement").checked)
 			floors.push('"basement"');
-		out += `floors: [${floors.join(", ")}],\n`
+		out += `\tfloors: [${floors.join(", ")}],\n`
 		const omens =  document.getElementById("symbol");
 		let val = omens.item( omens.selectedIndex).value;
 		if(val !== "None")
-			out += `symbols: ["${val}"],\n`
+			out += `\tsymbols: ["${val}"],\n`
 		out += "}```\n";
 		out += document.getElementById("notes").value;
 		navigator.clipboard.writeText(out);

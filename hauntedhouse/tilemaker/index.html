@@ -51,9 +51,9 @@
 		<label for="symbol">Symbol</label>
 		<select id="symbol">
 			<option>None</option>
-			<option value="omen">Omen</option>
-			<option value="item">Item</option>
-			<option value="event">Event</option>
+			<option value="OMEN">Omen</option>
+			<option value="ITEM">Item</option>
+			<option value="EVENT">Event</option>
 		</select><br>
 		<label for="notes">Note on room</label><br><textarea id="notes" style="width: 95%;resize: none"></textarea>
 	</div>
@@ -97,7 +97,7 @@
 		const omens =  document.getElementById("symbol");
 		let val = omens.item( omens.selectedIndex).value;
 		if(val !== "None")
-			out += `\tsymbols: ["${val}"],\n`
+			out += `\tsymbols: [symbols.${val}],\n`
 		out += "}```\n";
 		out += document.getElementById("notes").value;
 		navigator.clipboard.writeText(out);

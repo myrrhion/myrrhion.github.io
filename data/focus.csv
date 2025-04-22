@@ -1,0 +1,70 @@
+animal handling,communication
+bargaining,communication
+deception,communication
+disguise,communication
+etiquette,communication
+gambling,communication
+investigation,communication
+leadership,communication
+performance,communication
+persuasion,communication
+seduction,communication
+drinking,constitution
+rowing,constitution
+running,constitution
+stamina,constitution
+swimming,constitution
+arcane lore,cunning
+brewing,cunning
+cartography,cunning
+cryptography,cunning
+cultural lore,cunning
+enchantment,cunning
+engineering,cunning
+evaluation,cunning
+healing,cunning
+heraldry,cunning
+historical lore,cunning
+military lore,cunning
+musical lore,cunning
+natural lore,cunning
+navigation,cunning
+poison lore,cunning
+qun,cunning
+research,cunning
+religious lore,cunning
+writing,cunning
+acrobatics,dexterity
+brawling,dexterity
+calligraphy,dexterity
+crafting,dexterity
+grenades,dexterity
+initiative,dexterity
+legerdemain,dexterity
+lock picking,dexterity
+riding,dexterity
+staves,dexterity
+stealth,dexterity
+traps,dexterity
+arcane lance,magic
+empathy,perception
+hearing,perception
+searching,perception
+seeing,perception
+tracking,perception
+climbing,strength
+driving,strength
+intimidation,strength
+jumping,strength
+might,strength
+smithing,strength
+courage,willpower
+faith,willpower
+morale,willpower
+self-discipline,willpower
+sewing,dexterity
+forgery,cunning
+masonry,strength
+pickpocketing,dexterity
+rapport,communication
+painting,dexterity
